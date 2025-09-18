@@ -6,7 +6,7 @@ const char* ssid = "TEI_1";
 const char* password = "risol2000";
 const char* mqtt_server = "broker.emqx.io";
 const int mqtt_port = 1883;
-const char* mqtt_topic_sub = "tei/lampu";
+
 
 // Pin GPIO yang terhubung ke relay
 const int RELAY_PIN = 2;
@@ -43,7 +43,7 @@ void reconnect() {
     if (client.connect("ESP32_Lampu")) {
       Serial.println("Terhubung!");
       // Langganan ke topik untuk mengendalikan lampu
-      client.subscribe(mqtt_topic_sub);
+      client.subscribe("tei/lampu");
       Serial.println("Berhasil langganan topik: " + String(mqtt_topic_sub));
     } else {
       Serial.print("Gagal, rc=");
